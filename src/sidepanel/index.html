@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Canvas Companion</title>
+    <link rel="stylesheet" href="shared.css" />
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <header class="panel-header">
+      <div>
+        <h1>Canvas Companion</h1>
+        <p class="muted" id="phase-label">Phase 0 scaffold</p>
+      </div>
+      <span class="status" id="worker-status">Checking worker…</span>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Companion views">
+      <button type="button" class="tab" role="tab" aria-selected="true" data-tab="calendar">
+        Calendar
+      </button>
+      <button type="button" class="tab" role="tab" aria-selected="false" data-tab="courses">
+        Courses
+      </button>
+      <button type="button" class="tab" role="tab" aria-selected="false" data-tab="chat">
+        Chat
+      </button>
+    </nav>
+
+    <main>
+      <section id="panel-calendar" class="tab-panel" role="tabpanel">
+        <p class="banner">
+          Phase 0: layout only. Cached assignments, color-coding, and week/month/agenda
+          views land in Phase 2. Data will be read from local cache — never fetched here.
+        </p>
+        <p class="muted">No courses synced yet.</p>
+      </section>
+
+      <section id="panel-courses" class="tab-panel" role="tabpanel" hidden>
+        <p class="banner">
+          Phase 0: layout only. Course list, last-sync time, Refresh now, and Parse
+          syllabus land in Phases 1–2 and 6.
+        </p>
+        <p class="muted">Connect your Canvas domain in Settings after Phase 1.</p>
+      </section>
+
+      <section id="panel-chat" class="tab-panel" role="tabpanel" hidden>
+        <p class="banner">
+          This is Duey. Phase 5 will answer “what’s due today/this week” from local
+          cache with zero model calls. LLM fallback is Phase 6.
+        </p>
+        <div class="chat-log muted" id="chat-log">No messages yet.</div>
+        <form id="chat-form" class="chat-form">
+          <input
+            type="text"
+            id="chat-input"
+            placeholder="Ask about deadlines…"
+            autocomplete="off"
+            disabled
+          />
+          <button type="submit" class="btn" disabled>Send</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="panel-footer">
+      <a href="options.html" target="_blank" rel="noopener">Open settings</a>
+    </footer>
+
+    <script src="sidepanel.js" defer></script>
+  </body>
+</html>

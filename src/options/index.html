@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Canvas Companion Settings</title>
+    <link rel="stylesheet" href="shared.css" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <h1>Canvas Companion Settings</h1>
+        <p class="muted" id="phase-label">Phase 0 scaffold — fields are visual only</p>
+      </header>
+
+      <p class="banner">
+        Phase 0: this page is a layout shell so you can inspect the settings surface.
+        Connect / token / LLM / reminders are wired in later phases. Nothing is saved yet.
+      </p>
+
+      <section>
+        <h2>Canvas connection</h2>
+        <div class="field">
+          <label for="canvas-domain">Canvas domain</label>
+          <input
+            id="canvas-domain"
+            type="text"
+            placeholder="myschool.instructure.com"
+            autocomplete="off"
+            disabled
+          />
+          <p class="hint">
+            On first run (Phase 1) this requests a host permission for that origin only —
+            not every Instructure school.
+          </p>
+        </div>
+        <button type="button" class="btn" id="connect-btn">Connect</button>
+        <p class="status" id="connect-status"></p>
+      </section>
+
+      <section>
+        <h2>API token fallback</h2>
+        <div class="field">
+          <label for="canvas-token">Canvas access token (optional)</label>
+          <input id="canvas-token" type="password" disabled />
+          <p class="hint">
+            Default auth uses your existing Canvas session cookies. Paste a token only if
+            cookie calls return 401/403 (some SSO setups). Stored in chrome.storage.local,
+            never logged.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Duey (LLM)</h2>
+        <div class="field">
+          <label for="llm-provider">Provider</label>
+          <select id="llm-provider" disabled>
+            <option value="none" selected>None — rules-only chat (recommended until you add a key)</option>
+            <option value="openai">OpenAI</option>
+            <option value="anthropic">Anthropic</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="llm-key">API key</label>
+          <input id="llm-key" type="password" disabled />
+          <p class="hint">Read only by the background worker. Never exposed to Canvas pages.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Reminders</h2>
+        <div class="field">
+          <label for="intensity">Intensity</label>
+          <select id="intensity" disabled>
+            <option value="light">Light — 24 hours before</option>
+            <option value="standard" selected>Standard — 24h + 3h + 30min</option>
+            <option value="intense">Intense — plus morning summary extras</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="morning">Morning summary time</label>
+          <input id="morning" type="time" value="08:00" disabled />
+        </div>
+      </section>
+
+      <section>
+        <h2>Google Calendar (no extra sync code)</h2>
+        <p class="hint">
+          Canvas already publishes an ICS feed at Account → Settings → Calendar Feed
+          (<code>https://&lt;school&gt;.instructure.com/feeds/calendars/user_XXXX.ics</code>).
+          Google Calendar can subscribe to that URL natively. Phase 7 will surface a
+          copy/paste helper. This extension will not scrape or guess your feed URL.
+        </p>
+      </section>
+    </div>
+    <script src="options.js" defer></script>
+  </body>
+</html>
