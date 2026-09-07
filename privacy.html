@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Canvas Companion</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        font: 16px/1.5 system-ui, sans-serif;
+        max-width: 40rem;
+        margin: 2rem auto;
+        padding: 0 1.25rem;
+      }
+      a {
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <p><a href="index.html">Canvas Companion</a></p>
+    <h1>Privacy Policy</h1>
+    <p>Last updated: September 6, 2026</p>
+    <p>
+      Canvas Companion is a Chrome extension that shows your Canvas LMS courses in a side-panel calendar, with
+      local reminders and an optional scoped assistant (“Duey”).
+    </p>
+    <h2>Who we are</h2>
+    <p>
+      Canvas Companion is an independent student project.
+      Source: <a href="https://github.com/Saket0626/canvas-companion">github.com/Saket0626/canvas-companion</a>
+    </p>
+    <p>We do not operate a backend that receives your Canvas data. The extension runs in your browser.</p>
+    <h2>Data stored on your device</h2>
+    <p>The extension stores the following in chrome.storage.local on your computer:</p>
+    <ul>
+      <li>Canvas host you connected (for example elearning.utdallas.edu)</li>
+      <li>Cached course names, assignments, quizzes, calendar events, announcements, and stripped plain-text descriptions/syllabus text</li>
+      <li>Sync timestamps and reminder state</li>
+      <li>Optional Canvas API token, if you paste one in Settings</li>
+      <li>Optional LLM provider choice and API key, if you paste one in Settings</li>
+      <li>Optional Google OAuth client ID you paste, and a short-lived Google Calendar access token after you sign in</li>
+      <li>Optional ICS feed URL, if you paste one for your own notes</li>
+    </ul>
+    <p>This data does not leave your device except as described below.</p>
+    <h2>Data sent over the network</h2>
+    <p>
+      <strong>Canvas (required to sync).</strong> After you click Connect and approve Chrome’s host-permission
+      prompt, the extension calls your school’s Canvas REST API from the extension service worker using your
+      existing Canvas session cookies. If cookie login fails, it may use a token you saved. Canvas session
+      cookies and tokens are never sent to any other site.
+    </p>
+    <p>
+      <strong>Optional LLM.</strong> If you save your own OpenAI or Anthropic key in Settings, Duey and syllabus
+      parse may send a compact summary of cached course/assignment text to that provider. Canvas cookies and
+      tokens are never included. If you do not save a key, calendar, reminders, and most chat answers run locally.
+    </p>
+    <p>
+      <strong>Optional Google Calendar.</strong> If you click Sync to Google Cal and complete Google sign-in, the
+      extension sends event titles, times, and descriptions to Google’s Calendar API (www.googleapis.com) using
+      an OAuth access token. Canvas cookies and tokens are never included. You can skip Google Calendar entirely;
+      the local calendar still works.
+    </p>
+    <p>
+      <strong>Optional Rate My Professors.</strong> Only if you click to load a public snippet. That request does
+      not attach Canvas cookies.
+    </p>
+    <p>We do not use analytics, advertising, crash reporters, or other third-party trackers.</p>
+    <h2>What we do not do</h2>
+    <ul>
+      <li>We do not sell or rent your data</li>
+      <li>We do not use your data for advertising</li>
+      <li>We do not transfer Canvas content to data brokers</li>
+      <li>We do not execute remotely hosted extension code</li>
+    </ul>
+    <h2>Contact</h2>
+    <p>Open an issue on <a href="https://github.com/Saket0626/canvas-companion">the GitHub repo</a>.</p>
+  </body>
+</html>
